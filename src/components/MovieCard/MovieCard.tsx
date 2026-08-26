@@ -1,19 +1,19 @@
-import type { TvMazeShow } from '../../types/tvmaze'
+import type { BetaSeriesMovie } from '../../types/betaseries'
 import { DownloadButton } from '../DownloadButton/DownloadButton'
 
 interface MovieCardProps {
-  movie: TvMazeShow
+  movie: BetaSeriesMovie
 }
 
 export function MovieCard({ movie }: MovieCardProps) {
-  const imageUrl = movie.image?.original ?? movie.image?.medium
+  const imageUrl = movie.poster
 
   return (
     <article className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900 shadow-sm transition hover:-translate-y-1 hover:border-slate-700">
-      {movie.image ? (
+      {imageUrl ? (
         <img
-          src={movie.image.medium}
-          alt={`Affiche de ${movie.name}`}
+          src={imageUrl}
+          alt={`Affiche de ${movie.title}`}
           className="aspect-[2/3] w-full object-cover"
           loading="lazy"
         />
@@ -24,10 +24,10 @@ export function MovieCard({ movie }: MovieCardProps) {
       )}
 
       <div className="flex items-center justify-between gap-3 p-4">
-        <h2 className="min-w-0 truncate text-sm font-semibold text-slate-100" title={movie.name}>
-          {movie.name}
+        <h2 className="min-w-0 truncate text-sm font-semibold text-slate-100" title={movie.title}>
+          {movie.title}
         </h2>
-        {imageUrl && <DownloadButton imageUrl={imageUrl} title={movie.name} />}
+        {imageUrl && <DownloadButton imageUrl={imageUrl} title={movie.title} />}
       </div>
     </article>
   )

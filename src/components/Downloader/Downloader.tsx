@@ -1,8 +1,8 @@
-import type { TvMazeSearchResult } from '../../types/tvmaze'
+import type { BetaSeriesMovie } from '../../types/betaseries'
 import { MovieCard } from '../MovieCard/MovieCard'
 
 interface DownloaderProps {
-  results: TvMazeSearchResult[]
+  results: BetaSeriesMovie[]
 }
 
 export function Downloader({ results }: DownloaderProps) {
@@ -15,8 +15,8 @@ export function Downloader({ results }: DownloaderProps) {
       aria-label="Résultats de la recherche"
       className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-5 min-[420px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
     >
-      {results.map(({ show }) => (
-        <MovieCard key={show.id} movie={show} />
+      {results.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </section>
   )

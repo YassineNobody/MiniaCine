@@ -1,13 +1,13 @@
 
 import { useState } from 'react'
 
-import { searchShows } from './api/tvmaze'
+import { searchMovies } from './api/betaseries'
 import { Downloader } from './components/Downloader/Downloader'
 import { SearchForm } from './components/Form/SearchForm'
-import type { TvMazeSearchResult } from './types/tvmaze'
+import type { BetaSeriesMovie } from './types/betaseries'
 
 function App() {
-  const [results, setResults] = useState<TvMazeSearchResult[]>([])
+  const [results, setResults] = useState<BetaSeriesMovie[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -16,7 +16,7 @@ function App() {
     setError(null)
 
     try {
-      setResults(await searchShows(query))
+      setResults(await searchMovies(query))
     } catch {
       setResults([])
       setError('La recherche a échoué. Réessaie dans quelques instants.')
@@ -30,7 +30,7 @@ function App() {
       <header className="mx-auto mb-9 max-w-2xl text-center">
         <h1 className="text-4xl font-bold tracking-tight">Mini Ciné</h1>
         <p className="mt-3 text-sm text-slate-400">
-          Recherche une série et télécharge son affiche.
+          Recherche un film en français et télécharge son affiche.
         </p>
       </header>
       <SearchForm onSearch={handleSearch} isLoading={isLoading} />

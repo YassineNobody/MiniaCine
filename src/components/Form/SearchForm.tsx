@@ -22,8 +22,8 @@ export function SearchForm({ onSearch, isLoading }: SearchFormProps) {
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Rechercher une série…"
-        aria-label="Nom de la série"
+        placeholder="Rechercher un film…"
+        aria-label="Nom du film"
         className="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 outline-none placeholder:text-slate-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
       />
       <button
